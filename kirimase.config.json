@@ -1,0 +1,19 @@
+{
+  "hasSrc": true,
+  "packages": [
+    "shadcn-ui",
+    "drizzle",
+    "next-auth",
+    "trpc",
+    "resend"
+  ],
+  "preferredPackageManager": "pnpm",
+  "t3": false,
+  "alias": "@",
+  "rootPath": "src/",
+  "componentLib": "shadcn-ui",
+  "driver": "pg",
+  "provider": "neon",
+  "orm": "drizzle",
+  "auth": "next-auth"
+}

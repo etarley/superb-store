@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1705551070021,
+      "tag": "0000_pretty_sugar_man",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1705729546876,
+      "tag": "0001_aromatic_stranger",
+      "breakpoints": true
+    }
+  ]
+}

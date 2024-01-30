@@ -1,10 +1,10 @@
 export default function Loading() {
   return (
-    <div className="grid place-items-center animate-pulse text-neutral-300 p-4">
+    <div className="grid animate-pulse place-items-center p-4 text-neutral-300">
       <div role="status">
         <svg
           aria-hidden="true"
-          className="w-8 h-8 text-neutral-200 dark:text-neutral-600 fill-neutral-600 animate-spin"
+          className="size-8 animate-spin fill-neutral-600 text-neutral-200 dark:text-neutral-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

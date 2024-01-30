@@ -1,8 +1,8 @@
 import "server-only";
 
-import { getUserAuth } from "@/lib/auth/utils";
-import { appRouter } from "@/lib/server/routers/_app";
+// eslint-disable-next-line no-unused-vars
 import { env } from "@/lib/env.mjs";
+import { appRouter } from "@/lib/server/routers/_app";
 import { createTRPCContext } from "./context";
 
 import {
@@ -11,11 +11,11 @@ import {
   TRPCClientError,
 } from "@trpc/client";
 import { callProcedure } from "@trpc/server";
-import { type TRPCErrorResponse } from "@trpc/server/rpc";
 import { observable } from "@trpc/server/observable";
+import { type TRPCErrorResponse } from "@trpc/server/rpc";
 
-import { cache } from "react";
 import { cookies } from "next/headers";
+import { cache } from "react";
 
 import SuperJSON from "superjson";
 

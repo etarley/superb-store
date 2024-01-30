@@ -4,6 +4,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import React from "react";
 
 export default function Modal({
   title,
@@ -20,7 +21,7 @@ export default function Modal({
 }) {
   return (
     <Dialog onOpenChange={setOpen} open={open}>
-      <DialogContent>
+      <DialogContent className={className}>
         <DialogHeader className="px-5 pt-5">
           <DialogTitle>{title ?? "Modal"}</DialogTitle>
         </DialogHeader>

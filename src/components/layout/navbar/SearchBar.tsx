@@ -9,7 +9,7 @@ import { Search as SearchIcon } from 'lucide-react';
 function SearchBar() {
 
   return (
-    <div className="flex items-center justify-center h-14 px-4 md:px-6 lg:px-8">
+    <div className="flex h-14 items-center justify-center px-4 md:px-6 lg:px-8">
       <div className="relative w-full max-w-3xl">
         <Input
            className={cn(
@@ -21,7 +21,7 @@ function SearchBar() {
           type="search"
         />
         <div className="absolute inset-y-0 left-0 flex items-center pl-3">
-          <SearchIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+          <SearchIcon className="size-5 text-gray-500 dark:text-gray-400" />
         </div>
       </div>
     </div>

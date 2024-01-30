@@ -3,7 +3,9 @@ import Navbar from "@/components/layout/navbar";
 // import Navbar from "@/components/Navbar";
 import { Toaster } from "@/components/ui/toaster";
 import NextAuthProvider from "@/lib/auth/Provider";
+import QueryProvider from "@/lib/tanstackQuery/index";
 import TrpcProvider from "@/lib/trpc/Provider";
+import { cn } from "@/lib/utils";
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Head from "next/head";
@@ -25,11 +27,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-      <body className={inter.className}>
+      <body className={cn(inter.className,
+        'relative h-full antialiased'
+        )}>
 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 <NextAuthProvider>
 <TrpcProvider cookies={cookies().toString()}>
@@ -37,9 +41,16 @@ export default function RootLayout({
 <header>
   <Navbar />
 </header>
-<main className="flex-1 md:px-8 px-8">
-{children}
-</main></TrpcProvider>
+<QueryProvider>
+  <main className="relative flex min-h-screen flex-col">
+    <div className="flex-1 grow">
+      
+  {children}
+    </div>
+  </main>
+  
+</QueryProvider>
+</TrpcProvider>
 </NextAuthProvider>
 
 <Toaster />

@@ -14,7 +14,7 @@ export default function SignIn() {
 
   if (status === "loading") return (
   <div className="flex items-center space-x-4">
-    <Skeleton className="h-12 w-12 rounded-full" />
+    <Skeleton className="size-12 rounded-full" />
   </div>
 );
 
@@ -24,7 +24,7 @@ export default function SignIn() {
         <DropdownMenuTrigger asChild>
      <Avatar>
             <AvatarImage src={session.user.image ||""} alt="User avatar" />
-            <AvatarFallback className="border-border border-2 text-muted-foreground">
+            <AvatarFallback className="border-2 border-border text-muted-foreground">
             {session.user.name
               ? session.user.name
                   ?.split(" ")
@@ -36,10 +36,10 @@ export default function SignIn() {
           </Avatar>
           </DropdownMenuTrigger>
            <DropdownMenuContent className="w-64" align="end" forceMount>
-        <div className="flex items-center gap-3 px-2 py-4 border-b">
+        <div className="flex items-center gap-3 border-b px-2 py-4">
           <Avatar>
             <AvatarImage src={session.user.image ||""} alt="User avatar" />
-            <AvatarFallback className="border-border border-2 text-muted-foreground">
+            <AvatarFallback className="border-2 border-border text-muted-foreground">
             {session.user.name
               ? session.user.name
                   ?.split(" ")
@@ -56,41 +56,41 @@ export default function SignIn() {
         </div>
         <Link href='/account'>
           <DropdownMenuItem>
-            <UserIcon className="h-4 w-4 mr-2" />
+            <UserIcon className="mr-2 size-4" />
             Profile
           </DropdownMenuItem>
         </Link>
         <DropdownMenuItem>
-          <LocateIcon className="h-4 w-4 mr-2" />
+          <LocateIcon className="mr-2 size-4" />
           Addresses
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <CreditCardIcon className="h-4 w-4 mr-2" />
+          <CreditCardIcon className="mr-2 size-4" />
           Payment Methods
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <PackageIcon className="h-4 w-4 mr-2" />
+          <PackageIcon className="mr-2 size-4" />
           Orders
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <HeartIcon className="h-4 w-4 mr-2" />
+          <HeartIcon className="mr-2 size-4" />
           Wishlist
         </DropdownMenuItem>
         <Link href='/settings'>
           <DropdownMenuItem >
             
-              <SettingsIcon className="h-4 w-4 mr-2" />
+              <SettingsIcon className="mr-2 size-4" />
               Settings
             
           </DropdownMenuItem>
         </Link>
         <DropdownMenuItem>
-          <HelpCircleIcon className="h-4 w-4 mr-2" />
+          <HelpCircleIcon className="mr-2 size-4" />
           Help/Support
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="text-red-600" onClick={()=>signOut()}>
-          <LogOutIcon className="h-4 w-4 mr-2" />
+          <LogOutIcon className="mr-2 size-4" />
           Logout
         </DropdownMenuItem>
       </DropdownMenuContent>

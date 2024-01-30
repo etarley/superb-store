@@ -2,8 +2,8 @@ import { sql } from "drizzle-orm";
 import { boolean, date, decimal, integer, json, pgTable, smallint, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
+import { categories } from "./categories";
 
-import { type getProducts } from "@/lib/api/products/queries";
 
 import { randomUUID } from "crypto";
 
@@ -13,7 +13,7 @@ export const products = pgTable('products', {
   name: varchar("name", { length: 256 }).notNull(),
   description: text("description"),
   sku: varchar("sku", { length: 100 }),
-  categoryId: integer("category_id"),
+  categoryId: integer("category_id").references(()=>categories.id),
   price: decimal("price", {precision:10, scale:2}).notNull(),
   discountedPrice: decimal("discounted_price", {precision:10, scale:2}),
   quantityInStock: smallint("quantity_in_stock").notNull(),
@@ -82,6 +82,4 @@ export type NewProductParams = z.infer<typeof insertProductParams>;
 export type UpdateProductParams = z.infer<typeof updateProductParams>;
 export type ProductId = z.infer<typeof productIdSchema>["id"];
     
-// this type infers the return from getProducts() - meaning it will include any joins
-export type CompleteProduct = Awaited<ReturnType<typeof getProducts>>["products"][number];
 

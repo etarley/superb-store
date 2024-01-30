@@ -7,6 +7,7 @@ import GoogleProvider from "next-auth/providers/google";
 import { redirect } from "next/navigation";
 
 declare module "next-auth" {
+  // eslint-disable-next-line no-unused-vars
   interface Session {
     user: DefaultSession["user"] & {
       id: string;

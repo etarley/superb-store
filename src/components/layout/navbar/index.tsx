@@ -12,8 +12,8 @@ import SearchBar from './SearchBar';
 const Navbar: React.FC = async () => {
    
   return (
-  <nav className='relative  mb-4 shadow-sm border-b-[1px] px-4 sm:px-2 '>
-      <div className='flex items-center justify-between mx-8'>
+  <nav className='relative  mb-4 border-b-[1px] px-4 shadow-sm sm:px-2 '>
+      <div className='mx-8 flex items-center justify-between'>
         <div className="">
           <Link href="/" className="flex items-center">
             <LogoIcon/>

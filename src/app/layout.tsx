@@ -7,13 +7,13 @@ import QueryProvider from "@/lib/tanstackQuery/index";
 import TrpcProvider from "@/lib/trpc/Provider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import Head from "next/head";
 import { cookies } from "next/headers";
 import React from "react";
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] })
+const montserrat = Montserrat({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Superb-Store',
@@ -31,7 +31,7 @@ export default function RootLayout({
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
-      <body className={cn(inter.className,
+      <body className={cn(montserrat.className,
         'relative h-full antialiased'
         )}>
 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>

@@ -13,11 +13,11 @@ const Navbar: React.FC = async () => {
    
   return (
   <nav className='relative  mb-4 border-b-[1px] px-4 shadow-sm sm:px-2 '>
-      <div className='mx-8 flex items-center justify-between'>
+      <div className=' flex items-center justify-between'>
         <div className="">
           <Link href="/" className="flex items-center">
             <LogoIcon/>
-            <div className="ml-2 text-sm font-medium uppercase lg:block">
+            <div className="ml-2 text-sm font-medium uppercase max-sm:hidden lg:block">
               SUPERB-STORE
             </div>
           </Link>

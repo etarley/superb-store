@@ -1,7 +1,7 @@
-'use client'
+// 'use client'
 import { Button } from '@/components/ui/button';
-import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
+// import { useQuery } from '@tanstack/react-query';
+// import axios from 'axios';
 import { PlusIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,21 +17,33 @@ interface Product {
   image: string;
 }
 
-const fetchProducts = async () => {
-  const response = await axios.get<Product[]>('https://fakestoreapi.com/products');
-  return response.data;
-};
+// const fetchProducts = async () => {
+//   const response = await axios.get<Product[]>('https://fakestoreapi.com/products?limit=8');
+//   return response.data;
+// };
 
-const Products: React.FC = () => {
-  const { data, isLoading, isError } = useQuery({queryKey:['products'], queryFn:fetchProducts});
+async function getData() {
+  const res = await fetch ('https://fakestoreapi.com/products?limit=8')
 
-  if (isLoading) {
-    return <div>Loading...</div>;
+  if (!res.ok){
+    throw new Error('Failed to fetch data')
   }
+  return res.json() 
+}
 
-  if (isError) {
-    return <div>Error fetching data</div>;
-  }
+const Products: React.FC = async () => {
+  // const { data, isLoading, isError } = useQuery({queryKey:['products'], queryFn:fetchProducts});
+
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+
+  // if (isError) {
+  //   return <div>Error fetching data</div>;
+  // }
+
+  const data = await getData() as Product[]
+
 
   return (
     <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

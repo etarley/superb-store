@@ -32,7 +32,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </Head>
       <body className={cn(montserrat.className,
-        'relative h-full antialiased'
+        'relative h-full antialiased',
+        
         )}>
 <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
 <NextAuthProvider>

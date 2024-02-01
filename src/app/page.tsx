@@ -1,6 +1,5 @@
 
 import Categories from "@/components/Categories";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Products from "@/components/products/products";
 import { getUserAuth } from "@/lib/auth/utils";
 
@@ -9,8 +8,7 @@ export default async function Home() {
   
   const { session } = await getUserAuth();
   return (
-  <MaxWidthWrapper>
-      <main>
+      <main className="container">
     <Categories/>
     <Products/>
         {session ? (
@@ -19,6 +17,5 @@ export default async function Home() {
           </pre>
         ) : null}
       </main>
-  </MaxWidthWrapper>
   );
 }

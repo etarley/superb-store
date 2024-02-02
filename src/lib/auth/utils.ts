@@ -26,8 +26,11 @@ export type AuthSession = {
   } | null;
 };
 
+// Cast the adapter to the expected type
+const drizzleAdapter = DrizzleAdapter(db) as NextAuthOptions['adapter'];
+
 export const authOptions: NextAuthOptions = {
-  adapter: DrizzleAdapter(db),
+  adapter: drizzleAdapter,
   callbacks: {
     session: ({ session, user }) => {
       session.user.id = user.id;
@@ -46,7 +49,6 @@ export const authOptions: NextAuthOptions = {
   ],
 };
 
-
 export const getUserAuth = async () => {
   const session = await getServerSession(authOptions);
   return { session } as AuthSession;
@@ -56,4 +58,3 @@ export const checkAuth = async () => {
   const { session } = await getUserAuth();
   if (!session) redirect("/api/auth/signin");
 };
-

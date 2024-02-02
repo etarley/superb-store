@@ -1,9 +1,10 @@
 "use client";
 
 import { Category, NewCategoryParams, insertCategoryParams } from "@/lib/db/schema/categories";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -13,11 +14,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
+import { trpc } from "@/lib/trpc/client";
+import { useRouter } from "next/navigation";
+import { z } from "zod";
 
 const CategoryForm = ({
   category,
@@ -71,17 +71,19 @@ const CategoryForm = ({
 
   const { mutate: createCategory, isLoading: isCreating } =
     trpc.categories.createCategory.useMutation({
-      onSuccess: (res) => onSuccess("create"),
+      
+      onSuccess: () => onSuccess("create"),
     });
 
   const { mutate: updateCategory, isLoading: isUpdating } =
     trpc.categories.updateCategory.useMutation({
-      onSuccess: (res) => onSuccess("update"),
+      
+      onSuccess: () => onSuccess("update"),
     });
 
   const { mutate: deleteCategory, isLoading: isDeleting } =
     trpc.categories.deleteCategory.useMutation({
-      onSuccess: (res) => onSuccess("delete"),
+      onSuccess: () => onSuccess("delete"),
     });
 
   const handleSubmit = (values: NewCategoryParams) => {
@@ -113,7 +115,7 @@ const CategoryForm = ({
           render={({ field }) => (<FormItem>
               <FormLabel>Category Icon</FormLabel>
                 <FormControl>
-            <Input {...field} />
+            <Input {...field} value={field.value ?? ''}  />
           </FormControl>
 
               <FormMessage />

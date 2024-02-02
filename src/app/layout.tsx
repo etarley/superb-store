@@ -35,7 +35,7 @@ export default function RootLayout({
         'relative h-full antialiased',
         
         )}>
-<ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+<ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
 <NextAuthProvider>
 <TrpcProvider cookies={cookies().toString()}>
 {/* <Sidebar /> */}

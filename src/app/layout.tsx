@@ -43,11 +43,10 @@ export default function RootLayout({
   <Navbar />
 </header>
 <QueryProvider>
-  <main className="relative flex min-h-screen flex-col">
-    <div className="flex-1 grow">
+  <main className="container relative flex min-h-screen flex-col">
+    
       
   {children}
-    </div>
   </main>
   
 </QueryProvider>

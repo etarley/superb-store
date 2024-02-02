@@ -8,7 +8,7 @@ export default async function Home() {
   
   const { session } = await getUserAuth();
   return (
-      <main className="container">
+      <>
     <Categories/>
     <Products/>
         {session ? (
@@ -16,6 +16,6 @@ export default async function Home() {
             {JSON.stringify(session, null, 2)}
           </pre>
         ) : null}
-      </main>
+      </>
   );
 }

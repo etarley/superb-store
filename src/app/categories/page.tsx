@@ -8,7 +8,7 @@ export default async function Categories() {
   return (
     <main>
       <div className="flex justify-between">
-        <h1 className="font-semibold text-2xl my-2">Categories</h1>
+        <h1 className="my-2 text-2xl font-semibold">Categories</h1>
         <NewCategoryModal />
       </div>
       <CategoryList categories={categories} />

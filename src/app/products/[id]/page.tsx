@@ -54,7 +54,7 @@ const Page: React.FC<{ params: { id: string } }> = async ({ params }) => {
       <p className="text-neutral-500 sm:col-span-2">categories<ChevronRight className='inline size-4'/>{product.category}</p>
       <Image src={product.image} alt={product.title} className="mr-4 rounded border object-contain p-2 sm:size-[36rem]" width={1500} height={1500} />
       <div className='flex flex-col gap-1'>
-        <h1 className="mb-0.5 text-2xl sm:text-3xl font-bold">{product.title}</h1>
+        <h1 className="mb-0.5 text-2xl font-bold sm:text-3xl">{product.title}</h1>
         {/* <div className='flex flex-col gap-2'>     */}
          <Separator />
         <p className="text-2xl font-semibold text-neutral-800">$ {product.price}</p>

@@ -25,7 +25,7 @@ export default function CategoryList({ categories }: { categories: CompleteCateg
 
 const Category = ({ category }: { category: CompleteCategory }) => {
   return (
-    <li className="flex justify-between my-2">
+    <li className="my-2 flex justify-between">
       <div className="w-full">
         <div>{category.name}</div>
       </div>

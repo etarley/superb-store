@@ -20,12 +20,13 @@ const ProductsCarrousel= ({products} : {products: Product[]}) => {
     <Carousel
     opts={
         {
-            loop:true
+            loop:true,
+            align:'start'
         }
     }
     plugins={[
         Autoplay({
-          delay: 6000,
+          delay: 3000,
           stopOnFocusIn:true,
           stopOnMouseEnter:true
         }),

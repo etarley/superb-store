@@ -8,6 +8,7 @@ import {
   PaginationNext,
   PaginationPrevious
 } from "@/components/ui/pagination";
+import { Skeleton } from "@/components/ui/skeleton";
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { PlusIcon } from 'lucide-react';
@@ -42,30 +43,50 @@ const fetchProducts = async () => {
 //   return res.json() 
 // }
 
-const Products: React.FC = () => {
+const SkeletonProduct: React.FC = () => (
+  <Card className="rounded-lg shadow-lg">
+    <CardContent className='pb-1'>
+      <Skeleton className="my-2 h-80 w-full" />
+      <div className="space-y-2">
+        <Skeleton className="h-[28px] w-[250px]" />
+        <Skeleton className="h-6 w-[100px]" />
+      </div>
+    </CardContent>
+    <CardFooter className='justify-end'>
+      <Skeleton className="h-10 w-[140px]" />
+    </CardFooter>
+  </Card>
+);
 
-  const activePage = parseInt(useSearchParams().get('page')||'1')
-  
-  
-    const { data, isLoading, isError } = useQuery({
+const Products: React.FC = () => {
+  const activePage = parseInt(useSearchParams().get('page') || '1');
+
+  const { data, isLoading, isError } = useQuery({
     queryKey: ['products'],
     queryFn: fetchProducts,
   });
 
+  const itemsPerPage = 8;
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    // Render skeleton loading state while data is loading
+    return (
+      <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {[...Array(itemsPerPage)].map((_, index) => (
+          <SkeletonProduct key={index} />
+        ))}
+      </div>
+    );
   }
 
   if (isError) {
     return <div>Error fetching data</div>;
   }
 
-  if(!data){
-    return
+  if (!data) {
+    return null;
   }
 
-   const itemsPerPage = 8;
   const startIdx = (activePage - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
   const currentData = data.slice(startIdx, endIdx);
@@ -73,47 +94,49 @@ const Products: React.FC = () => {
   const pageCount = Math.ceil(data.length / itemsPerPage);
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
 
-
-
   return (
     <div>
-    <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {currentData?.map((product) => (
-        <Card key={product.id} className="rounded-lg shadow-lg">
-         <CardContent>
-<Link href={`products/${product.id}`}>
-             <Image src={product.image} alt={product.title} className="mb-2 size-80 object-contain p-2" width={800} height={800}/>
-             <h3 className="truncate text-lg font-medium">{product.title}</h3>
-</Link>
-           <p className="text-gray-600">${product.price}</p>
-         </CardContent>
-         <CardFooter className='justify-end'>
-          <Button>Add to Cart <PlusIcon className='ml-2 size-4'/></Button>
-         </CardFooter>
-        </Card>
-      ))}
-    </div>
-  <Pagination className='mb-6'>
-      <PaginationContent>
-        <PaginationItem>
-          {activePage > 1 && <PaginationPrevious href={`?page=${activePage-1}`} />}
-        </PaginationItem>
-        {
-          pages.map(page=>(
+      <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {currentData?.map((product) => (
+          <Card key={product.id} className="rounded-lg shadow-lg">
+            <CardContent>
+              <Link href={`products/${product.id}`}>
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  className="mb-2 size-80 object-contain p-2"
+                  width={800}
+                  height={800}
+                />
+                <h3 className="truncate text-lg font-medium">{product.title}</h3>
+              </Link>
+              <p className="text-gray-600">${product.price}</p>
+            </CardContent>
+            <CardFooter className='justify-end'>
+              <Button>Add to Cart <PlusIcon className='ml-2 size-4'/></Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+      <Pagination className='mb-6'>
+        <PaginationContent>
+          <PaginationItem>
+            {activePage > 1 && <PaginationPrevious href={`?page=${activePage-1}`} />}
+          </PaginationItem>
+          {pages.map(page => (
             <PaginationItem key={page}>
-              {activePage ===page ? <PaginationLink href={`?page=${page}`} isActive>{page}</PaginationLink>:
-               <PaginationLink href={`?page=${page}`}>{page}</PaginationLink>
-              }
-             
-              
+              {activePage === page ? (
+                <PaginationLink href={`?page=${page}`} isActive>{page}</PaginationLink>
+              ) : (
+                <PaginationLink href={`?page=${page}`}>{page}</PaginationLink>
+              )}
             </PaginationItem>
-          ))
-        }
-        <PaginationItem>
-          {activePage < pages.length && <PaginationNext href={`?page=${activePage+1}`} />}
-        </PaginationItem>
-      </PaginationContent>
-    </Pagination>
+          ))}
+          <PaginationItem>
+            {activePage < pages.length && <PaginationNext href={`?page=${activePage+1}`} />}
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
     </div>
   );
 };

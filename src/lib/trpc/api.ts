@@ -17,7 +17,6 @@ import { type TRPCErrorResponse } from "@trpc/server/rpc";
 import { cookies } from "next/headers";
 import { cache } from "react";
 
-import SuperJSON from "superjson";
 
 const createContext = cache(() => {
   return createTRPCContext({
@@ -29,7 +28,7 @@ const createContext = cache(() => {
 });
 
 export const api = createTRPCProxyClient<typeof appRouter>({
-  transformer: SuperJSON,
+  
   links: [
     loggerLink({
       enabled: (op) =>
@@ -48,9 +47,11 @@ export const api = createTRPCProxyClient<typeof appRouter>({
               return callProcedure({
                 procedures: appRouter._def.procedures,
                 path: op.path,
-                rawInput: op.input,
                 ctx,
                 type: op.type,
+                getRawInput: function (): Promise<unknown> {
+                  throw new Error("Function not implemented.");
+                }
               });
             })
             .then((data) => {

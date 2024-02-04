@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
+// import { useRouter } from 'next/router';
 
 const categories = [
   {
@@ -66,7 +67,7 @@ const categories = [
       </div>
     ),
     color: "bg-rose-100",
-    url: "categories/womens-clothing",
+    url: "?category=womens-clothing",
     key: 4,
   },
 ];

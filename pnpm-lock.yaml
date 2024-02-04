@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@auth/core':
-    specifier: ^0.24.0
-    version: 0.24.0
+    specifier: ^0.25.1
+    version: 0.25.1
   '@auth/drizzle-adapter':
-    specifier: ^0.4.0
-    version: 0.4.0
+    specifier: ^0.5.1
+    version: 0.5.1
   '@hookform/resolvers':
     specifier: ^3.3.4
     version: 3.3.4(react-hook-form@7.50.0)
@@ -90,17 +90,17 @@ dependencies:
     specifier: ^0.5.1
     version: 0.5.1(drizzle-orm@0.29.3)(zod@3.22.4)
   embla-carousel-autoplay:
-    specifier: 8.0.0-rc21
-    version: 8.0.0-rc21(embla-carousel@8.0.0-rc21)
+    specifier: 8.0.0-rc22
+    version: 8.0.0-rc22(embla-carousel@8.0.0-rc22)
   embla-carousel-react:
-    specifier: 8.0.0-rc21
-    version: 8.0.0-rc21(react@18.2.0)
+    specifier: 8.0.0-rc22
+    version: 8.0.0-rc22(react@18.2.0)
   framer-motion:
     specifier: ^11.0.3
     version: 11.0.3(react-dom@18.2.0)(react@18.2.0)
   lucide-react:
-    specifier: ^0.312.0
-    version: 0.312.0(react@18.2.0)
+    specifier: ^0.321.0
+    version: 0.321.0(react@18.2.0)
   nanoid:
     specifier: ^5.0.5
     version: 5.0.5
@@ -170,8 +170,8 @@ devDependencies:
     specifier: ^8.56.0
     version: 8.56.0
   eslint-config-next:
-    specifier: 14.0.4
-    version: 14.0.4(eslint@8.56.0)(typescript@5.3.3)
+    specifier: ^14.1.0
+    version: 14.1.0(eslint@8.56.0)(typescript@5.3.3)
   eslint-config-prettier:
     specifier: ^9.1.0
     version: 9.1.0(eslint@8.56.0)
@@ -185,8 +185,8 @@ devDependencies:
     specifier: ^8.4.33
     version: 8.4.33
   prettier:
-    specifier: 3.2.4
-    version: 3.2.4
+    specifier: 3.2.5
+    version: 3.2.5
   tailwindcss:
     specifier: ^3.4.1
     version: 3.4.1
@@ -208,8 +208,8 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
 
-  /@auth/core@0.24.0:
-    resolution: {integrity: sha512-wwTyapljg4ydyvtQRXSeOaj6nBVSvPkVoXws6i+/vPfINxz4lo9UuLifPLqW7iO72/f4Ttaez0g3XA42VtKQ8A==}
+  /@auth/core@0.25.1:
+    resolution: {integrity: sha512-Xt/0oV0ItS38BUeqc98LVYspoXSUifWS48BeEzWXkkdQgLcXEFnF008+CDLyZvnyv/zF4vahwJHeR/J5SK9RaA==}
     peerDependencies:
       nodemailer: ^6.8.0
     peerDependenciesMeta:
@@ -225,10 +225,10 @@ packages:
       preact-render-to-string: 5.2.3(preact@10.11.3)
     dev: false
 
-  /@auth/drizzle-adapter@0.4.0:
-    resolution: {integrity: sha512-1B5k1fbno/xosyXJN5ZNScfWNQkYKe4sF0kewW9ojWWHtaaJuFgWHihSs+TMRnFiyvaX1656MMbMRGMR1Ef9DA==}
+  /@auth/drizzle-adapter@0.5.1:
+    resolution: {integrity: sha512-zqRChafxLGIc6+ceJ9zuolNbxBrnAL8xfeIQJjM2pXo/tQOfit65UztT1cDrqFMGFZWcsrrULN85Yy9aRhN1UQ==}
     dependencies:
-      '@auth/core': 0.24.0
+      '@auth/core': 0.25.1
     transitivePeerDependencies:
       - nodemailer
     dev: false
@@ -845,10 +845,10 @@ packages:
     resolution: {integrity: sha512-Py8zIo+02ht82brwwhTg36iogzFqGLPXlRGKQw5s+qP/kMNc4MAyDeEwBKDijk6zTIbegEgu8Qy7C1LboslQAw==}
     dev: false
 
-  /@next/eslint-plugin-next@14.0.4:
-    resolution: {integrity: sha512-U3qMNHmEZoVmHA0j/57nRfi3AscXNvkOnxDmle/69Jz/G0o/gWjXTDdlgILZdrxQ0Lw/jv2mPW8PGy0EGIHXhQ==}
+  /@next/eslint-plugin-next@14.1.0:
+    resolution: {integrity: sha512-x4FavbNEeXx/baD/zC/SdrvkjSby8nBn8KcCREqk6UuwvwoAPZmaV8TFCAuo/cpovBRTIY67mHhe86MQQm/68Q==}
     dependencies:
-      glob: 7.1.7
+      glob: 10.3.10
     dev: true
 
   /@next/swc-darwin-arm64@14.1.0:
@@ -2029,8 +2029,9 @@ packages:
       dequal: 2.0.3
     dev: true
 
-  /array-buffer-byte-length@1.0.0:
-    resolution: {integrity: sha512-LPuwb2P+NrQw3XhxGc36+XSvuBPopovXYTR9Ew++Du9Yb/bx5AzBfrIsBoj0EZUifjQU+sHL21sseZ3jerWO/A==}
+  /array-buffer-byte-length@1.0.1:
+    resolution: {integrity: sha512-ahC5W1xgou+KTXix4sAO8Ki12Q+jf4i0+tmk3sC+zgcynshkHxzpXdImBehiUYKKKDwvfFiJl1tZt6ewscS1Mg==}
+    engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.5
       is-array-buffer: 3.0.4
@@ -2097,7 +2098,7 @@ packages:
     resolution: {integrity: sha512-yMBKppFur/fbHu9/6USUe03bZ4knMYiwFBcyiaXB8Go0qNehwX6inYPzK9U0NeQvGxKthcmHcaR8P5MStSRBAw==}
     engines: {node: '>= 0.4'}
     dependencies:
-      array-buffer-byte-length: 1.0.0
+      array-buffer-byte-length: 1.0.1
       call-bind: 1.0.5
       define-properties: 1.2.1
       es-abstract: 1.22.3
@@ -2647,34 +2648,34 @@ packages:
     resolution: {integrity: sha512-9AQB5eFTHyR3Gvt2t/NwR0le2jBSUNwCnMbUCejFWHD+so4tH40/dRLgoE+jxlPeWS43XJewyvCv+I8LPMl49Q==}
     dev: true
 
-  /embla-carousel-autoplay@8.0.0-rc21(embla-carousel@8.0.0-rc21):
-    resolution: {integrity: sha512-o8T3+cpkZyJZfpN1PqxRDOdep/wlLvBQTIr0KUQbtk/y44esiAdZEGCjR/GJDJbl2huMIB/GzxkC7JQYEHZPxQ==}
+  /embla-carousel-autoplay@8.0.0-rc22(embla-carousel@8.0.0-rc22):
+    resolution: {integrity: sha512-UFR9ocKapxuYwcAOv8mb6Rmy7TENpzzHTymKADzB1L5dAJJxjUtOci/OpE3KrZedQaniLMz3HIO9hHqgj1h/3w==}
     peerDependencies:
-      embla-carousel: 8.0.0-rc21
+      embla-carousel: 8.0.0-rc22
     dependencies:
-      embla-carousel: 8.0.0-rc21
+      embla-carousel: 8.0.0-rc22
     dev: false
 
-  /embla-carousel-react@8.0.0-rc21(react@18.2.0):
-    resolution: {integrity: sha512-DOa9hgF/T1fwb8D3rZ8FFMceY3aDXtbluZwzZYMLnN2Dqn0IBLN0l97o3obkMxI9Zzog0u1WMM6HE7AGF9SjEg==}
+  /embla-carousel-react@8.0.0-rc22(react@18.2.0):
+    resolution: {integrity: sha512-NwmISV0Cw9XVo76Vquz3hJaeZe7qoCRtrzStxlEY7qfZD8WR/f4JlQAso35URTs1BeYVhcuClflelioo+Zmidg==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.1 || ^18.0.0
     dependencies:
-      embla-carousel: 8.0.0-rc21
-      embla-carousel-reactive-utils: 8.0.0-rc21(embla-carousel@8.0.0-rc21)
+      embla-carousel: 8.0.0-rc22
+      embla-carousel-reactive-utils: 8.0.0-rc22(embla-carousel@8.0.0-rc22)
       react: 18.2.0
     dev: false
 
-  /embla-carousel-reactive-utils@8.0.0-rc21(embla-carousel@8.0.0-rc21):
-    resolution: {integrity: sha512-TnV49hoTdwfcKr2vgQHQ3zcCqJSkvLJ5rR/pGzmEx5GeO07CV/e755lkSD7No0C6cz+JFB8dcHV7uS+5Gnc7Lg==}
+  /embla-carousel-reactive-utils@8.0.0-rc22(embla-carousel@8.0.0-rc22):
+    resolution: {integrity: sha512-K4b8QhQGXYW5wr4l+U6XryhafsFV5c/IyohDnZN3MGoYIB9xY7qpjUWAcs5bTDjAD+qCZPOuXre0D3IVa28mqw==}
     peerDependencies:
-      embla-carousel: 8.0.0-rc21
+      embla-carousel: 8.0.0-rc22
     dependencies:
-      embla-carousel: 8.0.0-rc21
+      embla-carousel: 8.0.0-rc22
     dev: false
 
-  /embla-carousel@8.0.0-rc21:
-    resolution: {integrity: sha512-rK//vyPIhmD/5QUDtjk9A5RxPoDZ5LOATYMVSFECAzwcAe7yJmqXQbdYzEZf4ASOR+ivod5msqXsKgZXypA35Q==}
+  /embla-carousel@8.0.0-rc22:
+    resolution: {integrity: sha512-MeXnPT1LShfgAu8qXj3CskayV0R6OkHx7w3cPTx+Q5ZWKyShKpIuu7qVQJ5BoFegalE4n6yxqoQaRuGFbK9pYw==}
     dev: false
 
   /emoji-regex@8.0.0:
@@ -2705,7 +2706,7 @@ packages:
     resolution: {integrity: sha512-eiiY8HQeYfYH2Con2berK+To6GrK2RxbPawDkGq4UiCQQfZHb6wX9qQqkbpPqaxQFcl8d9QzZqo0tGE0VcrdwA==}
     engines: {node: '>= 0.4'}
     dependencies:
-      array-buffer-byte-length: 1.0.0
+      array-buffer-byte-length: 1.0.1
       arraybuffer.prototype.slice: 1.0.2
       available-typed-arrays: 1.0.6
       call-bind: 1.0.5
@@ -2910,8 +2911,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-next@14.0.4(eslint@8.56.0)(typescript@5.3.3):
-    resolution: {integrity: sha512-9/xbOHEQOmQtqvQ1UsTQZpnA7SlDMBtuKJ//S4JnoyK3oGLhILKXdBgu/UO7lQo/2xOykQULS1qQ6p2+EpHgAQ==}
+  /eslint-config-next@14.1.0(eslint@8.56.0)(typescript@5.3.3):
+    resolution: {integrity: sha512-SBX2ed7DoRFXC6CQSLc/SbLY9Ut6HxNB2wPTcoIWjUMd7aF7O/SIE7111L8FdZ9TXsNV4pulUDnfthpyPtbFUg==}
     peerDependencies:
       eslint: ^7.23.0 || ^8.0.0
       typescript: '>=3.3.1'
@@ -2919,7 +2920,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@next/eslint-plugin-next': 14.0.4
+      '@next/eslint-plugin-next': 14.1.0
       '@rushstack/eslint-patch': 1.7.2
       '@typescript-eslint/parser': 6.20.0(eslint@8.56.0)(typescript@5.3.3)
       eslint: 8.56.0
@@ -3413,17 +3414,6 @@ packages:
       minimatch: 9.0.3
       minipass: 7.0.4
       path-scurry: 1.10.1
-
-  /glob@7.1.7:
-    resolution: {integrity: sha512-OvD9ENzPLbegENnYP5UUfJIirTg4+XwMWGaQfQTY0JenxNvvIKP3U3/tAQSPIu/lHxXYSZmpXlUHeqAIdKzBLQ==}
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 3.1.2
-      once: 1.4.0
-      path-is-absolute: 1.0.1
-    dev: true
 
   /glob@7.2.3:
     resolution: {integrity: sha512-nFR0zLpU2YCaRxwoCJvL6UvCH2JFyFVIvwTLsIf21AuHlMskA1hhTdk+LlYJtOlYt9v6dvszD2BGRqBL+iQK9Q==}
@@ -3944,8 +3934,8 @@ packages:
       es5-ext: 0.10.62
     dev: true
 
-  /lucide-react@0.312.0(react@18.2.0):
-    resolution: {integrity: sha512-3UZsqyswRXjW4t+nw+InICewSimjPKHuSxiFYqTshv9xkK3tPPntXk/lvXc9pKlXIxm3v9WKyoxcrB6YHhP+dg==}
+  /lucide-react@0.321.0(react@18.2.0):
+    resolution: {integrity: sha512-Fi9VahIna6642U+2nAGSjnXwUBV3WyfFFPQq4yi3w30jtqxDLfSyiYCtCYCYQZ2KWNZc1MDI+rcsa0t+ChdYpw==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -4543,8 +4533,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier@3.2.4:
-    resolution: {integrity: sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==}
+  /prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true

@@ -6,7 +6,31 @@ import {
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ReactNode } from 'react';
 
-const queryClient = new QueryClient()
+import { QueryCache } from '@tanstack/react-query';
+
+const queryCache = new QueryCache({
+  onError: (error) => {
+    console.log(error)
+  },
+  onSuccess: (data) => {
+    console.log(data)
+  },
+  onSettled: (data, error) => {
+    console.log(data, error)
+  },
+})
+
+
+
+const queryClient = new QueryClient({
+  queryCache,
+  defaultOptions:{
+    queries:{
+      staleTime: 60 * 1000,
+    
+    }
+  }
+})
 
 
 

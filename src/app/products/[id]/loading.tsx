@@ -1,5 +1,5 @@
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ChevronRight } from "lucide-react";
@@ -28,7 +28,7 @@ export default function Loading() {
             align:'start'
         }
       }>
-        <CarouselContent>
+        <CarouselContent className="justify-between py-6">
         {
             [...Array(5)].map((_,index) => (
                  <CarouselItem className='ml-4 md:basis-1/2 lg:basis-1/5' key={index}>
@@ -44,6 +44,8 @@ export default function Loading() {
             )
         }
         </CarouselContent>
+        <CarouselPrevious className='-left-8 top-1/2 -translate-y-1/2' />
+  <CarouselNext className='-right-8 top-1/2 -translate-y-1/2'/>
 
       </Carousel>
    

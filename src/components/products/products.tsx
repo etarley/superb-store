@@ -64,6 +64,7 @@ const Products: React.FC = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ['products'],
     queryFn: fetchProducts,
+     
   });
 
   const itemsPerPage = 8;

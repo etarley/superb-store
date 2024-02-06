@@ -1,5 +1,3 @@
-'use client'
-import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardTitle } from './ui/card';
@@ -24,13 +22,6 @@ const ProductsCarrousel= ({products} : {products: Product[]}) => {
             align:'start'
         }
     }
-    plugins={[
-        Autoplay({
-          delay: 3000,
-          stopOnFocusIn:true,
-          stopOnMouseEnter:true
-        }),
-      ]}
       className='container max-w-xs p-0 sm:max-w-none'
     >
     <CarouselContent className='justify-between py-6'>

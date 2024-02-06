@@ -29,8 +29,12 @@ interface Product {
   image: string;
 }
 
-const fetchProducts = async () => {
-  const response = await axios.get<Product[]>(`https://fakestoreapi.com/products`);
+const fetchProducts = async (category?: string | null) => {
+  let url = 'https://fakestoreapi.com/products';
+  if (category) {
+    url += `/category/${category}`;
+  }
+  const response = await axios.get<Product[]>(url);
   return response.data;
 };
 
@@ -58,12 +62,17 @@ const SkeletonProduct: React.FC = () => (
   </Card>
 );
 
-const Products: React.FC = () => {
-  const activePage = parseInt(useSearchParams().get('page') || '1');
+const Products = () => {
+ 
+  const searchParams = useSearchParams()
+  const activePage = parseInt(searchParams.get('page') || '1');
+  const activeCategory = searchParams.get('category')
+  
+
 
   const { data, isLoading, isError } = useQuery({
-    queryKey: ['products'],
-    queryFn: fetchProducts,
+    queryKey: ['products', activeCategory],
+    queryFn:()=> fetchProducts(activeCategory),
      
   });
 
@@ -122,20 +131,45 @@ const Products: React.FC = () => {
       <Pagination className='mb-6'>
         <PaginationContent>
           <PaginationItem>
-            {activePage > 1 && <PaginationPrevious href={`?page=${activePage-1}`} />}
-          </PaginationItem>
-          {pages.map(page => (
-            <PaginationItem key={page}>
-              {activePage === page ? (
-                <PaginationLink href={`?page=${page}`} isActive>{page}</PaginationLink>
-              ) : (
-                <PaginationLink href={`?page=${page}`}>{page}</PaginationLink>
-              )}
-            </PaginationItem>
-          ))}
-          <PaginationItem>
-            {activePage < pages.length && <PaginationNext href={`?page=${activePage+1}`} />}
-          </PaginationItem>
+  {activePage > 1 && (
+    <PaginationPrevious
+      href={{
+        query: { page: activePage - 1, ...(activeCategory && { category: activeCategory }) }
+      }}
+    />
+  )}
+</PaginationItem>
+{pages.map((page) => (
+  <PaginationItem key={page}>
+    {activePage === page ? (
+      <PaginationLink
+        href={{
+          query: { page: page, ...(activeCategory && { category: activeCategory }) }
+        }}
+        isActive
+      >
+        {page}
+      </PaginationLink>
+    ) : (
+      <PaginationLink
+        href={{
+          query: { page: page, ...(activeCategory && { category: activeCategory }) }
+        }}
+      >
+        {page}
+      </PaginationLink>
+    )}
+  </PaginationItem>
+))}
+<PaginationItem>
+  {activePage < pages.length && (
+    <PaginationNext
+      href={{
+        query: { page: activePage + 1, ...(activeCategory && { category: activeCategory }) }
+      }}
+    />
+  )}
+</PaginationItem>
         </PaginationContent>
       </Pagination>
     </div>

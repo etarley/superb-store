@@ -9,6 +9,7 @@ import * as React from "react"
 
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import Autoplay from "embla-carousel-autoplay"
 
 type CarouselApi = UseEmblaCarouselType[1]
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>
@@ -52,7 +53,7 @@ const Carousel = React.forwardRef<
       orientation = "horizontal",
       opts,
       setApi,
-      plugins,
+      plugins=[Autoplay({delay:4000})],
       className,
       children,
       ...props

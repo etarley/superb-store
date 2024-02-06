@@ -3,12 +3,20 @@ import Categories from "@/components/Categories";
 import Products from "@/components/products/products";
 
 
-export default async function Home() {
+export default async function Home(
+  {searchParams}:
+  {searchParams: { [key: string]: string | string[] | undefined }}
+) {
   
-  // const { session } = await getUserAuth();
+const {category} = searchParams
+
+
+
+
+
   return (
       <>
-    <Categories/>
+    <Categories categoryParam={category}/>
     <Products/>
         {/* {session ? (
           <pre className="whitespace-break-spaces break-all rounded-sm bg-secondary p-4 text-secondary-foreground shadow-sm">

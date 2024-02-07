@@ -100,13 +100,21 @@ const Products = () => {
     return null;
   }
 
+  // Filter data based on search query
+  const filteredData = activeSearch
+    ? data.filter(product => product.title.toLowerCase().includes(activeSearch.toLowerCase()))
+    : data;
+
+  // Calculate pageCount based on filteredData
+  const pageCount = Math.ceil(filteredData.length / itemsPerPage);
+
+  // Calculate start and end indices for current page
   const startIdx = (activePage - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
-  const currentData = activeSearch
-  ? data.filter(product => product.title.toLowerCase().includes(activeSearch.toLowerCase()))
-  : data.slice(startIdx, endIdx);
 
-  const pageCount = Math.ceil(data.length / itemsPerPage);
+  // Get data for the current page
+  const currentData = filteredData.slice(startIdx, endIdx);
+
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
 
   return (

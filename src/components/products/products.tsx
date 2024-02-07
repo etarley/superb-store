@@ -15,6 +15,7 @@ import { PlusIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+
 import { Card, CardContent, CardFooter } from '../ui/card';
 
 import { useSearchParams } from 'next/navigation';
@@ -67,8 +68,10 @@ const Products = () => {
   const searchParams = useSearchParams()
   const activePage = parseInt(searchParams.get('page') || '1');
   const activeCategory = searchParams.get('category')
-  
+  const activeSearch = searchParams.get('search')
 
+
+  
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['products', activeCategory],
@@ -99,7 +102,9 @@ const Products = () => {
 
   const startIdx = (activePage - 1) * itemsPerPage;
   const endIdx = startIdx + itemsPerPage;
-  const currentData = data.slice(startIdx, endIdx);
+  const currentData = activeSearch
+  ? data.filter(product => product.title.toLowerCase().includes(activeSearch.toLowerCase()))
+  : data.slice(startIdx, endIdx);
 
   const pageCount = Math.ceil(data.length / itemsPerPage);
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
@@ -131,45 +136,45 @@ const Products = () => {
       <Pagination className='mb-6'>
         <PaginationContent>
           <PaginationItem>
-  {activePage > 1 && (
-    <PaginationPrevious
-      href={{
-        query: { page: activePage - 1, ...(activeCategory && { category: activeCategory }) }
-      }}
-    />
-  )}
-</PaginationItem>
-{pages.map((page) => (
-  <PaginationItem key={page}>
-    {activePage === page ? (
-      <PaginationLink
-        href={{
-          query: { page: page, ...(activeCategory && { category: activeCategory }) }
-        }}
-        isActive
-      >
-        {page}
-      </PaginationLink>
-    ) : (
-      <PaginationLink
-        href={{
-          query: { page: page, ...(activeCategory && { category: activeCategory }) }
-        }}
-      >
-        {page}
-      </PaginationLink>
-    )}
-  </PaginationItem>
-))}
-<PaginationItem>
-  {activePage < pages.length && (
-    <PaginationNext
-      href={{
-        query: { page: activePage + 1, ...(activeCategory && { category: activeCategory }) }
-      }}
-    />
-  )}
-</PaginationItem>
+            {activePage > 1 && (
+              <PaginationPrevious
+                href={{
+                  query: { page: activePage - 1, ...(activeCategory && { category: activeCategory }), ...(activeSearch && { search: activeSearch }) }
+                }}
+              />
+            )}
+          </PaginationItem>
+          {pages.map((page) => (
+            <PaginationItem key={page}>
+              {activePage === page ? (
+                <PaginationLink
+                  href={{
+                    query: { page: page, ...(activeCategory && { category: activeCategory }), ...(activeSearch && { search: activeSearch }) }
+                  }}
+                  isActive
+                >
+                  {page}
+                </PaginationLink>
+              ) : (
+                <PaginationLink
+                  href={{
+                    query: { page: page, ...(activeCategory && { category: activeCategory }), ...(activeSearch && { search: activeSearch }) }
+                  }}
+                >
+                  {page}
+                </PaginationLink>
+              )}
+            </PaginationItem>
+          ))}
+          <PaginationItem>
+            {activePage < pages.length && (
+              <PaginationNext
+                href={{
+                  query: { page: activePage + 1, ...(activeCategory && { category: activeCategory }), ...(activeSearch && { search: activeSearch }) }
+                }}
+              />
+            )}
+          </PaginationItem>
         </PaginationContent>
       </Pagination>
     </div>

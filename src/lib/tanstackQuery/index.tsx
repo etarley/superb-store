@@ -12,11 +12,11 @@ const queryCache = new QueryCache({
   onError: (error) => {
     console.log(error)
   },
+  // eslint-disable-next-line no-unused-vars
   onSuccess: (data) => {
-    console.log(data)
   },
   onSettled: (data, error) => {
-    console.log(data, error)
+    console.log(error)
   },
 })
 

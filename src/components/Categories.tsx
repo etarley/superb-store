@@ -72,7 +72,6 @@ const categories = [
 const Categories = ({categoryParam}:{categoryParam: string | string[] | undefined}) => {
 
   
-console.log('the param',categoryParam);
 
   return (
     <div className="mb-4 rounded-lg bg-slate-50 p-8 dark:bg-slate-900">

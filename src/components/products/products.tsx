@@ -30,6 +30,16 @@ interface Product {
   image: string;
 }
 
+export type CartItem = {
+   id: number;
+  title: string;
+  price: string;
+  category: string;
+  description: string;
+  image: string;
+  quantity: number
+}
+
 const fetchProducts = async (category?: string | null) => {
   let url = 'https://fakestoreapi.com/products';
   if (category) {
@@ -64,6 +74,40 @@ const SkeletonProduct: React.FC = () => (
 );
 
 const Products = () => {
+
+   const addToCart = (product: Product) => {
+  const existingCart = sessionStorage.getItem('cart');
+  let cart: CartItem[] = [];
+  if (existingCart) {
+    cart = JSON.parse(existingCart);
+  }
+  
+  // Check if the product already exists in the cart
+  const existingProductIndex = cart.findIndex(item => item.id === product.id);
+  
+  if (existingProductIndex !== -1) {
+    
+      cart[existingProductIndex].quantity += 1;
+    
+  } else {
+    // If the product does not exist, add it to the cart with a quantity of 1
+    cart.push({ ...product, quantity: 1 });
+  }
+  
+  // Update the cart in the session storage
+  sessionStorage.setItem('cart', JSON.stringify(cart));
+  window.dispatchEvent(new Event ('storage'))
+  
+  // Update the cart count displayed
+  updateCartCount(cart.length);
+};
+
+  const updateCartCount = (count: number) => {
+    const cartCountElement = document.getElementById('cart-count');
+    if (cartCountElement) {
+      cartCountElement.textContent = count.toString();
+    }
+  };
  
   const searchParams = useSearchParams()
   const activePage = parseInt(searchParams.get('page') || '1');
@@ -117,6 +161,8 @@ const Products = () => {
 
   const pages = Array.from({ length: pageCount }, (_, index) => index + 1);
 
+  
+
   return (
     <div>
       <div className="my-6 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -136,7 +182,7 @@ const Products = () => {
               <p className="text-gray-600">${product.price}</p>
             </CardContent>
             <CardFooter className='justify-end'>
-              <Button>Add to Cart <PlusIcon className='ml-2 size-4'/></Button>
+               <Button onClick={() => addToCart(product)}>Add to Cart <PlusIcon className='ml-2'/></Button>
             </CardFooter>
           </Card>
         ))}

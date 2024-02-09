@@ -7,6 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "@/compon
 import { cn } from '@/lib/utils';
 import { Minus, Plus, ShoppingCart, Trash } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 
 const Cart: React.FC = () => {
@@ -96,17 +97,17 @@ const Cart: React.FC = () => {
           ) : (
             <div>
               {cart.map(product => (
-                 <Card key={product.id} className="my-2 flex items-center">
-    <CardContent className='grid grid-cols-2 p-4'>
-        <Image src={product.image} alt={product.title} width={64} height={64} className="row-span-2 mr-4 size-16 object-contain" />
+                 <Card key={product.id} className="my-2">
+    <CardContent className='grid grid-cols-3 items-center p-4'>
+        <Image src={product.image} alt={product.title} width={80} height={80} className="row-span-2 mr-4 size-20 object-contain" />
         
-          <div>
+          <div className='col-span-2'>
             <p className="truncate text-sm font-semibold">{product.title}</p>
             <p className="text-xs text-primary opacity-70">${product.price}</p>
           </div>
         
         
-        <div className='flex'>
+        <div className='col-span-2 flex justify-self-end'>
           <Button variant='ghost' size="icon" onClick={() => removeFromCart(product.id)} className="mr-2">
           <Trash size={16} className='text-destructive' />
         </Button>
@@ -127,9 +128,11 @@ const Cart: React.FC = () => {
                 <span className="text-sm font-semibold">Subtotal:</span>
                 <span className="text-sm font-semibold">${calculateSubtotal()}</span>
               </div>
-              <Button className="mt-4 w-full">
-                Checkout
-              </Button>
+              <Link href="/checkout">
+                <Button className="mt-4 w-full">
+                  Checkout
+                </Button>
+              </Link>
             </div>
           )}
         </div>
